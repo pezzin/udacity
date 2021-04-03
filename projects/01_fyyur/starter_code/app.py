@@ -23,6 +23,9 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 # TODO: connect to a local postgresql database
+# DONE - see config info in config.py file
+
+
 migrate = Migrate(app, db)
 
 db.create_all()
@@ -43,6 +46,13 @@ class Venue(db.Model):
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
 
+    # Added missing fields
+
+    genres = db.Column(db.String(120))
+    website_link = db.Column(db.String(120))
+    looking_for_talent = db.Column(db.Boolean)
+    seeking_description = db.Column(db.String(500))
+
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
 class Artist(db.Model):
@@ -57,9 +67,23 @@ class Artist(db.Model):
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
 
+    # Added missing fields
+
+    website_link = db.Column(db.String(120))
+    looking_for_talent = db.Column(db.Boolean)
+    seeking_description = db.Column(db.String(500))
+
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
 # TODO Implement Show and Artist models, and complete all model relationships and properties, as a database migration.
+
+# shows_table = db.Table('Show',
+#     id = db.Column(db.Integer, primary_key=True),
+#     date_time = db.Column(db.DateTime),
+#     db.Column('artist_id', db.Integer, db.ForeignKey('artist.id'), primary_key=True),
+#     db.Column('venue_id', db.Integer, db.ForeignKey('venue.id'), primary_key=True)
+#     )
+# We don't need to store the image of the venue as we fetch it from the artist table at run time
 
 #----------------------------------------------------------------------------#
 # Filters.
