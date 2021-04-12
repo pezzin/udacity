@@ -281,7 +281,7 @@ def create_venue_submission():
         image_link=request.form.get('image_link'),
         facebook_link=request.form.get('facebook_link'),
         seeking_description=request.form.get('seeking_description'),
-        looking_for_talent=request.form.get('looking_for_talent'),
+        looking_for_talent='looking_for_talent' in request.form,
         website_link=request.form.get('website_link')
     )
     db.session.add(new_venue)
@@ -398,7 +398,6 @@ def edit_artist_submission(artist_id):
 
   try:
     artist = Artist.query.filter_by(id=artist_id).all()[0]
-    print(artist.looking_for_venue)
     artist.name=request.form.get('name')
     artist.city=request.form.get('city')
     artist.state=request.form.get('state')
@@ -407,9 +406,8 @@ def edit_artist_submission(artist_id):
     artist.facebook_link=request.form.get('facebook_link')
     artist.website_link=request.form.get('website_link')
     artist.image_link=request.form.get('image_link')
-    artist.looking_for_venue=request.form.get('looking_for_venue')
+    artist.looking_for_venue = 'looking_for_venue' in request.form # This was hard for me to get, but I made it! :)
     artist.seeking_description=request.form.get('seeking_description')
-    print(artist.looking_for_venue)
     db.session.commit()
   except:
     db.session.rollback()
@@ -456,8 +454,8 @@ def edit_venue_submission(venue_id):
     venue.website_link=request.form.get('website_link')
     venue.image_link=request.form.get('image_link')
     venue.seeking_description=request.form.get('seeking_description')
+    venue.looking_for_talent = 'looking_for_talent' in request.form
 
-    print (venue)
     db.session.commit()
   except:
     db.session.rollback()
@@ -493,7 +491,7 @@ def create_artist_submission():
       facebook_link=request.form.get('facebook_link'),
       image_link=request.form.get('image_link'),
       website_link=request.form.get('website_link'),
-      looking_for_venue=request.form.get('looking_for_venue'),
+      looking_for_venue= 'looking_for_venue' in request.form,
       seeking_description=request.form.get('seeking_description')
     )
 
