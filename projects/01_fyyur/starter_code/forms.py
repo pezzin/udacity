@@ -120,7 +120,7 @@ class VenueForm(FlaskForm):
         'website_link'
     )
 
-    seeking_talent = BooleanField( 'seeking_talent' )
+    looking_for_talent = BooleanField( 'looking_for_talent' )
 
     seeking_description = StringField(
         'seeking_description'
@@ -231,7 +231,7 @@ class ArtistForm(FlaskForm):
         'website_link'
      )
 
-    seeking_venue = BooleanField( 'seeking_venue' )
+    looking_for_venue = BooleanField( 'looking_for_venue' )
 
     seeking_description = StringField(
             'seeking_description'

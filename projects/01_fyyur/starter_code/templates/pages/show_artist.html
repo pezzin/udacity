@@ -26,14 +26,14 @@
 		<p>
 			<i class="fab fa-facebook-f"></i> {% if artist.facebook_link %}<a href="{{ artist.facebook_link }}" target="_blank">{{ artist.facebook_link }}</a>{% else %}No Facebook Link{% endif %}
         </p>
-		{% if artist.seeking_venue %}
+		{% if artist.looking_for_venue %}
 		<div class="seeking">
 			<p class="lead">Currently seeking performance venues</p>
 			<div class="description">
 				<i class="fas fa-quote-left"></i> {{ artist.seeking_description }} <i class="fas fa-quote-right"></i>
 			</div>
 		</div>
-		{% else %}	
+		{% else %}
 		<p class="not-seeking">
 			<i class="fas fa-moon"></i> Not currently seeking performance venues
 		</p>
@@ -75,4 +75,3 @@
 <a href="/artists/{{ artist.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
 
 {% endblock %}
-
